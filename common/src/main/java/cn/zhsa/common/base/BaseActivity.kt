@@ -1,6 +1,7 @@
 package cn.zhsa.common.base
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,7 +11,10 @@ import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import cn.zhsa.common.BaseApplication
+import cn.zhsa.common.utils.AndroidBarUtils
+import cn.zhsa.common.utils.StatusBarUtil
 import cn.zhsa.common.view.MultipleStatusView
+import com.blankj.utilcode.util.BarUtils
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
@@ -28,12 +32,17 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutId())
+        initStatusBar()
         initData()
         initView()
         start()
         initListener()
 
 
+    }
+
+    private fun initStatusBar() {
+        AndroidBarUtils.setBarDarkMode(this,true)
     }
 
     private fun initListener() {

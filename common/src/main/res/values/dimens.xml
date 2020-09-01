@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_edge">32dp</dimen>
+    <dimen name="btn_login_corner_radius">28dp</dimen>
+    <dimen name="common_font_size">14sp</dimen>
+    <dimen name="title_font_size">20sp</dimen>
+    <dimen name="margin_edge">16dp</dimen>
+    <dimen name="common_corner_radius">8dp</dimen>
+    <dimen name="form_title_font_size">16sp</dimen>
+    <dimen name="form_content_font_size">16sp</dimen>
+    <dimen name="form_image_corner">4dp</dimen>
+    <dimen name="form_image_width">64dp</dimen>
+    <dimen name="top_edge">10dp</dimen>
+</resources>

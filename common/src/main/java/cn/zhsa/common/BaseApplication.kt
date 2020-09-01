@@ -6,8 +6,10 @@ import android.content.Context
 import android.os.Bundle
 import cn.zhsa.common.utils.DisplayManager
 import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.utilcode.util.Utils
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
+import com.tencent.mmkv.MMKV
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 import kotlin.properties.Delegates
@@ -17,25 +19,26 @@ class BaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        initRouter()
         initConfig()
         DisplayManager.init(this)
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
     }
+
     private fun setupLeakCanary(): RefWatcher {
         return if (LeakCanary.isInAnalyzerProcess(this)) {
             RefWatcher.DISABLED
         } else LeakCanary.install(this)
     }
+
     /**
      * 初始化配置
      */
     private fun initConfig() {
+        //初始化mmkv
+        var rootDir = MMKV.initialize(this)
         //路由初始化
-        if (BuildConfig.DEBUG) {
-            ARouter.openDebug();
-            ARouter.openLog();
-        }
-        ARouter.init(this)
+        Utils.init(this)
         context = applicationContext
         refWatcher = setupLeakCanary()
         if (BuildConfig.DEBUG) {
@@ -44,13 +47,22 @@ class BaseApplication : Application() {
             Timber.plant(CrashReportingTree())
         }
     }
+
+    private fun initRouter() {
+        if (BuildConfig.DEBUG) {
+            ARouter.openDebug()
+            ARouter.openLog()
+        }
+        ARouter.init(this)
+    }
+
     private val mActivityLifecycleCallbacks = object : ActivityLifecycleCallbacks {
         override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-            Timber.d( "onCreated: " + activity.componentName.className)
+            Timber.d("onCreated: " + activity.componentName.className)
         }
 
         override fun onActivityStarted(activity: Activity) {
-            Timber.d( "onStart: " + activity.componentName.className)
+            Timber.d("onStart: " + activity.componentName.className)
         }
 
         override fun onActivityResumed(activity: Activity) {
@@ -73,6 +85,7 @@ class BaseApplication : Application() {
             Timber.d("onDestroy: " + activity.componentName.className)
         }
     }
+
     companion object {
 
         private val TAG = this::class.java.canonicalName

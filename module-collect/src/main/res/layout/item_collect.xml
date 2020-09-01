@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item"
+            type="cn.zhsa.module_collect.model.CollectBean" />
+    </data>
+    <com.qmuiteam.qmui.layout.QMUIRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_shadow"
+        android:layout_marginStart="@dimen/margin_edge"
+        android:layout_marginEnd="@dimen/margin_edge"
+        android:paddingStart="@dimen/margin_edge"
+        android:paddingEnd="12dp"
+        android:paddingTop="12dp"
+        android:paddingLeft="@dimen/margin_edge"
+        android:paddingRight="12dp">
+        <com.qmuiteam.qmui.alpha.QMUIAlphaTextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLength="16"
+            android:singleLine="true"
+            android:text="@{item.title}"
+            android:textColor="#ff202842"
+            android:textSize="14sp" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/tv_title"
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#57C8A9"
+            app:status="@{item.status}"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            />
+        <com.qmuiteam.qmui.widget.QMUIRadiusImageView2
+            android:layout_alignParentRight="true"
+            android:id="@+id/iv_cover"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:imageUrl="@{item.storeCover}"
+            />
+        <View
+            android:layout_marginTop="12dp"
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#E4E7ED"
+            android:layout_below="@+id/tv_status"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_time"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@+id/line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:transferTime="@{item.time}"
+            android:textColor="#ff636d8c"
+            android:textSize="12sp"
+            />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_search"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/line"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            />
+    </com.qmuiteam.qmui.layout.QMUIRelativeLayout>
+</layout>
+
+

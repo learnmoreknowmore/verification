@@ -1,4 +1,13 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="appTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">false</item>
+    </style>
     <style name="MultipleStatusView"/>
     <style name="MultipleStatusView.Content">
         <item name="android:layout_width">wrap_content</item>

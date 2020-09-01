@@ -10,25 +10,25 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import cn.zhsa.common.base.BaseActivity
+import cn.zhsa.common.router.RouterMap
+import cn.zhsa.common.utils.AndroidBarUtils
 import cn.zhsa.common.utils.StatusBarUtil
 import cn.zhsa.login.R
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
 
-
-class LoginActivity : AppCompatActivity() {
+@Route(path = RouterMap.LOGIN)
+class LoginActivity : BaseActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_login)
-        StatusBarUtil.immersive(this)
-        StatusBarUtil.darkMode(this,true)
 
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)
@@ -100,6 +100,18 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
         }
+    }
+
+    override fun layoutId(): Int = R.layout.activity_login
+
+    override fun initData() {
+    }
+
+    override fun initView() {
+        AndroidBarUtils.setTranslucent(this)
+    }
+
+    override fun start() {
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {

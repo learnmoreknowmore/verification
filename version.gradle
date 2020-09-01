@@ -40,7 +40,7 @@ versions.dagger = "2.16"
 versions.dexmaker = "2.2.0"
 versions.espresso = "3.2.0"
 versions.fragment = "1.2.1"
-versions.glide = "4.8.0"
+versions.glide = "4.10.0"
 versions.hamcrest = "1.3"
 versions.junit = "4.12"
 versions.kotlin = "1.4.0"
@@ -68,6 +68,7 @@ versions.qmui = "1.4.0"
 versions.rxJava = "2.1.5"
 versions.rxandroid = "2.0.1"
 versions.arouter = "1.0.2"
+versions.mmkv = "1.2.2"
 ext.versions = versions
 
 def build_versions = [:]
@@ -144,6 +145,9 @@ fragment.testing = "androidx.fragment:fragment-testing:${versions.fragment}"
 deps.fragment = fragment
 
 def glide = [:]
+glide.lib = "com.github.bumptech.glide:glide:$versions.glide"
+glide.integration = "com.github.bumptech.glide:okhttp3-integration:$versions.glide"
+glide.transformations = 'jp.wasabeef:glide-transformations:4.0.1'
 glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
 glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
 deps.glide = glide
@@ -212,6 +216,7 @@ room.rxjava2 = "androidx.room:room-rxjava2:$versions.room"
 room.testing = "androidx.room:room-testing:$versions.room"
 deps.room = room
 
+deps.mmkv = "com.tencent:mmkv-static:$versions.mmkv"
 deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
 
 deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"

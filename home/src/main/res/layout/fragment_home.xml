@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <com.qmuiteam.qmui.alpha.QMUIAlphaRelativeLayout
+        android:paddingStart="@dimen/margin_edge"
+        android:paddingEnd="@dimen/margin_edge"
+        android:gravity="center_vertical"
+        android:id="@+id/tool"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+        <com.qmuiteam.qmui.alpha.QMUIAlphaTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/title_font_size"
+            android:textStyle="bold"
+            android:text="@string/home"
+            >
+
+        </com.qmuiteam.qmui.alpha.QMUIAlphaTextView>
+        <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+            android:layout_alignParentRight="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/icon_mine"
+            app:qmui_is_circle="true"
+            />
+    </com.qmuiteam.qmui.alpha.QMUIAlphaRelativeLayout>
+
+
+    <com.qmuiteam.qmui.widget.textview.QMUISpanTouchFixTextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_edge"
+        android:layout_marginTop="17dp"
+        android:text="Hi,   用户15828583449"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginEnd="@dimen/margin_edge"
+        app:layout_constraintTop_toBottomOf="@id/tool" />>
+
+    <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+        android:id="@+id/iv_offline_collect"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginStart="@dimen/margin_edge"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="@dimen/margin_edge"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome"
+        app:qmui_corner_radius="@dimen/common_corner_radius"
+        app:qmui_selected_mask_color="@color/colorPrimary"
+        app:srcCompat="@mipmap/icon_collect" />
+
+    <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+        android:id="@+id/iv_rectify_notice"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginStart="@dimen/margin_edge"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="@dimen/margin_edge"
+        app:layout_constraintTop_toBottomOf="@+id/iv_offline_collect"
+        app:qmui_corner_radius="@dimen/common_corner_radius"
+        app:qmui_selected_mask_color="@color/colorPrimary"
+        app:srcCompat="@mipmap/icon_rectification" />
+</androidx.constraintlayout.widget.ConstraintLayout>

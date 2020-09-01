@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
+import cn.zhsa.common.router.RouterMap
 import cn.zhsa.login.R
 import cn.zhsa.login.data.LoginRepository
 import cn.zhsa.login.data.Result
@@ -24,8 +25,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
         if (result is Result.Success) {
             //
-            ARouter.getInstance().build("/home").navigation();
-            //_loginResult.value = LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
+            _loginResult.value = LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
+
+            ARouter.getInstance().build(RouterMap.HOME).navigation()
         } else {
             _loginResult.value = LoginResult(error = R.string.login_failed)
         }

@@ -1,4 +1,8 @@
-apply plugin: 'com.android.library'
+if (isNeedLoginModule.toBoolean()) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
 
 apply plugin: 'kotlin-android'
 
@@ -8,13 +12,9 @@ apply plugin: 'kotlin-android-extensions'
 
 
 kapt {
-
     arguments {
-
         arg("AROUTER_MODULE_NAME", project.getName())
-
     }
-
 }
 android {
     compileSdkVersion build_versions.compile_sdk
@@ -34,6 +34,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            if (!isNeedLoginModule.toBoolean()) {
+                manifest.srcFile 'src/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    exclude '**/debug/**'
+                }
+            }
+        }
+    }
     kotlinOptions { jvmTarget = '1.8' }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -50,11 +62,12 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation deps.qmui
-
-    implementation "com.alibaba:arouter-api:1.5.0"
-
-    implementation "com.alibaba:arouter-compiler:1.2.2"
-
+    implementation "com.blankj:utilcode:1.24.2"
+    //运行时权限
+    implementation 'pub.devrel:easypermissions:1.2.0'
+    //路由
+    implementation 'com.alibaba:arouter-api:1.5.0'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

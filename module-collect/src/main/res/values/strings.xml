@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">module-collect</string>
+    <string name="offline_collect">线下采集</string>
+    <string name="add_collect">+ 新增采集</string>
+    <string name="rectification_search">整改通知书查询</string>
+</resources>
